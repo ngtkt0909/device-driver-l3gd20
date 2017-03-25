@@ -1,3 +1,16 @@
+/**
+ * @file		l3gd20.c
+ * @brief		Device Driver for L3GD20
+ *
+ * @author		T. Ngtk
+ * @copyright	Copyright (c) 2017 T. Ngtk
+ *
+ * @par License
+ *	Released under the MIT and GPL Licenses.
+ *	- https://github.com/ngtkt0909/device-driver-l3gd20/blob/master/LICENSE-MIT
+ *	- https://github.com/ngtkt0909/device-driver-l3gd20/blob/master/LICENSE-GPL
+ */
+
 #include <linux/delay.h> 
 #include <linux/device.h>
 #include <linux/kernel.h> 
@@ -8,10 +21,16 @@
 #include <linux/string.h>
 #include "l3gd20.h"
 
+/*------------------------------------------------------------------------------
+	Type Definition
+------------------------------------------------------------------------------*/
 struct i2c_sns_device {
 	struct i2c_client *client;
 };
 
+/*------------------------------------------------------------------------------
+	Global Variables
+------------------------------------------------------------------------------*/
 static const struct i2c_device_id i2c_sns_id[] = {
 	{ "i2c_l3gd20", 0 },
 	{ }
@@ -33,9 +52,9 @@ static int16_t i2c_sns_read(struct i2c_client *client, uint8_t reg_h, uint8_t re
 	return (int16_t)(((val_h & 0xFF) << 8) | (val_l & 0xFF));
 }
 
-/*******************************************************************************
-
-*******************************************************************************/
+/*------------------------------------------------------------------------------
+	Functions (Internal)
+------------------------------------------------------------------------------*/
 static int gyro_show(struct device *dev, struct device_attribute *attr, char *buf)
 {
 	struct i2c_sns_device *data = (struct i2c_sns_device *)dev_get_drvdata(dev);
@@ -49,6 +68,9 @@ static int gyro_show(struct device *dev, struct device_attribute *attr, char *bu
 }
 static DEVICE_ATTR(gyro, S_IRUSR | S_IRGRP, gyro_show, NULL);
 
+/*------------------------------------------------------------------------------
+	Functions (External)
+------------------------------------------------------------------------------*/
 static int i2c_sns_probe(struct i2c_client *client, const struct i2c_device_id *id)
 {
 	struct i2c_sns_device *dev;
@@ -121,4 +143,4 @@ static struct i2c_driver i2c_sns_driver = {
 module_i2c_driver(i2c_sns_driver);
 
 MODULE_DESCRIPTION("I2C L3GD20 driver");
-MODULE_LICENSE("GPL");
+MODULE_LICENSE("Dual MIT/GPL");
