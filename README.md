@@ -2,7 +2,7 @@
 
 ## Overview
 **Device driver for L3GD20**.
-Can read 3-axis gyro sensors (dps).
+Can read 3-axis gyro sensor.
 
 ## Install: Cross Compiling (for Raspberry Pi)
 Build cross compilation environment
@@ -37,8 +37,8 @@ $ make
 
 Move the kernel module into the kernel directory and update module information:
 ```shell
-$ sudo mkdir -p /lib/modules/`uname-r`/misc
-$ sudo cp ./src/l3gd20.ko /lib/modules/`uname-r`/misc
+$ sudo mkdir -p /lib/modules/`uname -r`/misc
+$ sudo cp ./src/l3gd20.ko /lib/modules/`uname -r`/misc
 $ sudo depmod -a
 ```
 
@@ -48,6 +48,13 @@ Notify I2C device to the I2C core driver:
 $ sudo -s
 # echo "i2c_l3gd20 0x6a" > /sys/bus/i2c/devices/i2c-1/new_device
 ```
+
+Can read raw values of 3-axis gyro sensor:
+```shell
+$ sudo -s
+# cat /sys/bus/i2c/devices/1-006a/gyro
+```
+(comma-delimited, X-axis, Y-axis, and Z-axis)
 
 Remove I2C device:
 ```shell
