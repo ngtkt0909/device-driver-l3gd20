@@ -16,12 +16,13 @@ clean:
 	$(RM) $(DOCS)
 
 install:
-	sudo mkdir -p /lib/modules/`uname -r`/misc
-	sudo cp ./src/i2c_l3gd20.ko /lib/modules/`uname -r`/misc
-	sudo depmod -a
+	mkdir -p /lib/modules/`uname -r`/misc
+	cp ./src/i2c_l3gd20.ko /lib/modules/`uname -r`/misc
+	depmod -a
 
 uninstall:
-	sudo $(RM) /lib/modules/`uname -r`/misc/i2c_l3gd20.ko
+	$(RM) /lib/modules/`uname -r`/misc/i2c_l3gd20.ko
+	depmod -a
 
 connect:
 	echo "i2c_l3gd20 0x6a" > /sys/bus/i2c/devices/i2c-1/new_device
