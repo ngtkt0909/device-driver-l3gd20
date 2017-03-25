@@ -1,5 +1,5 @@
 /**
- * @file		l3gd20.h
+ * @file		i2c_l3gd20.h
  * @brief		Device Driver for L3GD20
  *
  * @author		T. Ngtk
@@ -11,8 +11,8 @@
  *	- https://github.com/ngtkt0909/device-driver-l3gd20/blob/master/LICENSE-GPL
  */
 
-#ifndef __L3GD20_H__
-#define __L3GD20_H__
+#ifndef __I2C_L3GD20_H__
+#define __I2C_L3GD20_H__
 
 #define ADDR_L3GD20		0x6A
 
@@ -30,4 +30,4 @@
 
 #define DPS_PER_LSB		0.00875
 
-#endif	/* __L3GD20_H__ */
+#endif	/* __I2C_L3GD20_H__ */

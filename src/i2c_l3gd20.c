@@ -1,5 +1,5 @@
 /**
- * @file		l3gd20.c
+ * @file		i2c_l3gd20.c
  * @brief		Device Driver for L3GD20
  *
  * @author		T. Ngtk
@@ -19,7 +19,7 @@
 #include <linux/slab.h> 
 #include <linux/i2c.h> 
 #include <linux/string.h>
-#include "l3gd20.h"
+#include "i2c_l3gd20.h"
 
 /*------------------------------------------------------------------------------
 	Prototype Declaration
