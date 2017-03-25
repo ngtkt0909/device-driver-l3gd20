@@ -37,8 +37,8 @@ $ make
 
 Move the kernel module into the kernel directory and update module information:
 ```shell
-$ sudo mkdir -p /lib/modules/`uname-r`/misc
-$ sudo cp ./src/l3gd20.ko /lib/modules/`uname-r`/misc
+$ sudo mkdir -p /lib/modules/`uname -r`/misc
+$ sudo cp ./src/l3gd20.ko /lib/modules/`uname -r`/misc
 $ sudo depmod -a
 ```
 
