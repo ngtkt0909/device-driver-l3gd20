@@ -11,14 +11,9 @@
  *	- https://github.com/ngtkt0909/device-driver-l3gd20/blob/master/LICENSE-GPL
  */
 
-#include <linux/delay.h> 
-#include <linux/device.h>
-#include <linux/kernel.h> 
-#include <linux/mutex.h> 
-#include <linux/module.h> 
-#include <linux/slab.h> 
-#include <linux/i2c.h> 
-#include <linux/string.h>
+#include <linux/module.h>
+#include <linux/slab.h>
+#include <linux/i2c.h>
 #include "i2c_l3gd20.h"
 
 /*------------------------------------------------------------------------------
