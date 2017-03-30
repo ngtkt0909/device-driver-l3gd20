@@ -31,5 +31,8 @@ disconnect:
 	echo "0x6a" > /sys/bus/i2c/devices/i2c-1/delete_device
 	modprobe -r i2c_l3gd20
 
+read:
+	cat /sys/bus/i2c/devices/i2c-1/1-006a/gyro
+
 doc:
 	doxygen ./Doxyfile
