@@ -30,7 +30,7 @@ $ make ARCH=arm CROSS_COMPILE=../tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabih
 
 Change first and second lines of Makefile (**KPATH**, **TPATH**) according to download path on the previous step.
 
-Make a kernel module (./src/i2c_l3gd20.ko):
+Make a kernel module (./i2c/src/i2c_l3gd20.ko or ./spi/src/spi_l3gd20.ko):
 ```shell
 $ make
 ```
@@ -47,19 +47,18 @@ $ sudo make uninstall
 ```
 
 ## Usage
-Connect I2C device and notify it to I2C core driver:
+Connect I2C/SPI device and notify it to I2C/SPI core driver:
 ```shell
 $ sudo make connect
 ```
 
 Can read raw values of 3-axis gyro sensor:
 ```shell
-$ sudo -s
-# cat /sys/bus/i2c/devices/1-006a/gyro
+$ sudo make read
 ```
 (comma-delimited, X-axis, Y-axis, and Z-axis)
 
-Disconnect I2C device:
+Disconnect I2C/SPI device:
 ```shell
 $ sudo make disconnect
 ```
